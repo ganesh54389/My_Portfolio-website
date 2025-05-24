@@ -8,7 +8,6 @@
 }
 
 :root {
-    /* Default Theme (Light) */
     --primary-color: #2563eb;
     --secondary-color: #1e40af;
     --accent-color: #14b8a6;
@@ -23,118 +22,6 @@
     --border-color: #e5e7eb;
 }
 
-/* Dark Theme */
-[data-theme="dark"] {
-    --primary-color: #3b82f6;
-    --secondary-color: #60a5fa;
-    --accent-color: #2dd4bf;
-    --text-color: #f3f4f6;
-    --light-text: #9ca3af;
-    --background: #111827;
-    --section-bg: #1f2937;
-    --card-bg: #1f2937;
-    --light-bg: #374151;
-    --white: #1f2937;
-    --shadow-color: rgba(0, 0, 0, 0.3);
-    --border-color: #374151;
-}
-
-/* Rainbow Theme */
-[data-theme="rainbow"] {
-    --primary-color: #ff6b6b;
-    --secondary-color: #4ecdc4;
-    --accent-color: #ffd93d;
-    --text-color: #2d3436;
-    --light-text: #636e72;
-    --background: #ffffff;
-    --section-bg: #f9f9f9;
-    --card-bg: #ffffff;
-    --light-bg: #ffeaa7;
-    --white: #ffffff;
-    --shadow-color: rgba(255, 107, 107, 0.1);
-    --border-color: #ffeaa7;
-}
-
-/* Sunset Theme */
-[data-theme="sunset"] {
-    --primary-color: #ff7e5f;
-    --secondary-color: #feb47b;
-    --accent-color: #ff9966;
-    --text-color: #2d3436;
-    --light-text: #636e72;
-    --background: #ffffff;
-    --section-bg: #fff5f5;
-    --card-bg: #ffffff;
-    --light-bg: #ffe8e8;
-    --white: #ffffff;
-    --shadow-color: rgba(255, 126, 95, 0.1);
-    --border-color: #ffe8e8;
-}
-
-/* Forest Green Theme */
-[data-theme="forest"] {
-    --primary-color: #2ecc71;
-    --secondary-color: #27ae60;
-    --accent-color: #1abc9c;
-    --text-color: #2d3436;
-    --light-text: #636e72;
-    --background: #ffffff;
-    --section-bg: #f0fff4;
-    --card-bg: #ffffff;
-    --light-bg: #e0f2e9;
-    --white: #ffffff;
-    --shadow-color: rgba(46, 204, 113, 0.1);
-    --border-color: #e0f2e9;
-}
-
-/* Mint Green Theme */
-[data-theme="mint"] {
-    --primary-color: #00b894;
-    --secondary-color: #00cec9;
-    --accent-color: #81ecec;
-    --text-color: #2d3436;
-    --light-text: #636e72;
-    --background: #ffffff;
-    --section-bg: #f0f9ff;
-    --card-bg: #ffffff;
-    --light-bg: #e0f2fe;
-    --white: #ffffff;
-    --shadow-color: rgba(0, 184, 148, 0.1);
-    --border-color: #e0f2fe;
-}
-
-/* Sage Green Theme */
-[data-theme="sage"] {
-    --primary-color: #6b8e23;
-    --secondary-color: #556b2f;
-    --accent-color: #9acd32;
-    --text-color: #2d3436;
-    --light-text: #636e72;
-    --background: #ffffff;
-    --section-bg: #f5f9f0;
-    --card-bg: #ffffff;
-    --light-bg: #e8f0e0;
-    --white: #ffffff;
-    --shadow-color: rgba(107, 142, 35, 0.1);
-    --border-color: #e8f0e0;
-}
-
-/* Emerald Theme */
-[data-theme="emerald"] {
-    --primary-color: #10b981;
-    --secondary-color: #059669;
-    --accent-color: #34d399;
-    --text-color: #2d3436;
-    --light-text: #636e72;
-    --background: #ffffff;
-    --section-bg: #ecfdf5;
-    --card-bg: #ffffff;
-    --light-bg: #d1fae5;
-    --white: #ffffff;
-    --shadow-color: rgba(16, 185, 129, 0.1);
-    --border-color: #d1fae5;
-}
-
 html {
     scroll-behavior: smooth;
 }
@@ -142,6 +29,7 @@ html {
 body {
     line-height: 1.6;
     color: var(--text-color);
+    background: var(--background);
 }
 
 /* Navigation */
@@ -789,10 +677,12 @@ footer {
     background: var(--card-bg);
     padding: 1rem;
     border-radius: 50px;
-    box-shadow: 0 4px 6px var(--shadow-color);
+    box-shadow: 0 4px 15px var(--shadow-color);
     z-index: 1000;
     display: flex;
     gap: 0.5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
 }
 
 .theme-btn {
@@ -801,15 +691,19 @@ footer {
     border-radius: 50%;
     border: 2px solid var(--border-color);
     cursor: pointer;
-    transition: transform 0.3s;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .theme-btn:hover {
     transform: scale(1.1);
+    box-shadow: 0 0 15px var(--shadow-color);
 }
 
 .theme-btn.active {
     border: 2px solid var(--primary-color);
+    box-shadow: 0 0 10px var(--primary-color);
 }
 
 .theme-btn[data-theme="light"] {
@@ -842,6 +736,39 @@ footer {
 
 .theme-btn[data-theme="emerald"] {
     background: linear-gradient(45deg, #10b981, #059669);
+}
+
+.theme-btn[data-theme="ocean"] {
+    background: linear-gradient(45deg, #0066cc, #00ccff);
+}
+
+.theme-btn[data-theme="sunset-dream"] {
+    background: linear-gradient(45deg, #ff6b6b, #ffb8b8);
+}
+
+.theme-btn[data-theme="royal"] {
+    background: linear-gradient(45deg, #6c5ce7, #a29bfe);
+}
+
+.theme-btn[data-theme="midnight"] {
+    background: linear-gradient(45deg, #2c3e50, #34495e);
+}
+
+/* Theme Button Hover Effects */
+.theme-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.theme-btn:hover::before {
+    transform: translateX(100%);
 }
 
 /* Education Section */

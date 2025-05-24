@@ -151,34 +151,4 @@ contactForm.addEventListener('submit', (e) => {
     // Show success message
     alert('Thank you for your message! I will get back to you soon.');
     contactForm.reset();
-});
-
-// Theme Switcher
-const themeSwitcher = document.querySelector('.theme-switcher');
-const themeButtons = document.querySelectorAll('.theme-btn');
-
-// Check for saved theme preference
-const savedTheme = localStorage.getItem('theme') || 'light';
-document.documentElement.setAttribute('data-theme', savedTheme);
-themeButtons.forEach(btn => {
-    if (btn.dataset.theme === savedTheme) {
-        btn.classList.add('active');
-    }
-});
-
-// Theme switching functionality
-themeButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-        const theme = btn.dataset.theme;
-        
-        // Update theme
-        document.documentElement.setAttribute('data-theme', theme);
-        
-        // Update active button
-        themeButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        
-        // Save preference
-        localStorage.setItem('theme', theme);
-    });
 }); 
